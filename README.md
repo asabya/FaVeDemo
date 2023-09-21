@@ -1,5 +1,7 @@
-# privateGPT
-Ask questions to your documents without an internet connection, using the power of LLMs. 100% private, no data leaves your execution environment at any point. You can ingest documents and ask questions without an internet connection!
+# FaVeDemo
+
+This is a Demo for [FaVe](https://github.com/fairDataSociety/FaVe) intigrating with langchain.
+Ask questions to your documents. 100% private. You can ingest documents and ask questions.
 
 Built with [LangChain](https://github.com/hwchase17/langchain) and [GPT4All](https://github.com/nomic-ai/gpt4all) and [LlamaCpp](https://github.com/ggerganov/llama.cpp)
 
@@ -40,13 +42,10 @@ Run the following command to ingest all the data.
 python ingest.py
 ```
 
-It will create a `db` folder containing the local vectorstore. Will take time, depending on the size of your documents.
-You can ingest as many documents as you want, and all will be accumulated in the local embeddings database. 
-If you want to start from an empty database, delete the `db` folder.
+It will create a collection (document and kv store) in FairOS through FaVe. Will take time, depending on the size of your documents.
+You can ingest as many documents as you want, and all will be accumulated in FaVe.
 
-Note: during the ingest process no data leaves your local environment. You could ingest without an internet connection.
-
-## Ask questions to your documents, locally!
+## Ask questions to your documents!
 In order to ask a question, run a command like:
 
 ```shell
@@ -69,7 +68,7 @@ Type `exit` to finish the script.
 Selecting the right local models and the power of `LangChain` you can run the entire pipeline locally, without any data leaving your environment, and with reasonable performance.
 
 - `ingest.py` uses `LangChain` tools to parse the document and create embeddings locally using `LlamaCppEmbeddings`. It then stores the result in a distributed vector database using `FaVe` vector store. 
-- `privateGPT.py` uses a local LLM based on `GPT4All-J` or `LlamaCpp` to understand questions and create answers. The context for the answers is extracted from the local vector store using a similarity search to locate the right piece of context from the docs.
+- `privateGPT.py` uses a local LLM based on `GPT4All-J` or `LlamaCpp` to understand questions and create answers. The context for the answers is extracted from `FaVe` using a similarity search to locate the right piece of context from the docs.
 - `GPT4All-J` wrapper was introduced in LangChain 0.0.162.
 
 # Disclaimer
