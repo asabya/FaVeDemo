@@ -1,5 +1,9 @@
 # FaVeDemo
 
+## Introduction
+
+FaVeDemo is a Python-based demo project designed to showcase the capabilities of the FaVe API. This repository contains various scripts that interact with FaVe, including data ingestion and GPT-related functionalities.
+
 This is a Demo for [FaVe](https://github.com/fairDataSociety/FaVe) intigrating with langchain.
 Ask questions to your documents. 100% private. You can ingest documents and ask questions.
 
@@ -7,19 +11,43 @@ Built with [LangChain](https://github.com/hwchase17/langchain) and [GPT4All](htt
 
 <img width="902" alt="demo" src="https://user-images.githubusercontent.com/721666/236942256-985801c9-25b9-48ef-80be-3acbb4575164.png">
 
+
+## Features
+
+- FaVe API client for easy interaction
+- Data ingestion script
+- GPT-related functionalities
+- Example environment configuration
+
+## Prerequisites
+
+- Python 3.x
+- See `requirements.txt` for required Python packages
+
 # Environment Setup
 
 In order to set your environment up to run the code here, first install all requirements:
+Clone the repository and navigate to the project directory:
 
-```shell
+```bash
+git clone https://github.com/asabya/FaVeDemo.git
+cd FaVeDemo
+```
+
+Install the required dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
+## Models
 Then, download the 2 models and place them in a directory of your choice.
 - LLM: default to [ggml-gpt4all-j-v1.3-groovy.bin](https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
 - Embedding: default to [ggml-model-q4_0.bin](https://huggingface.co/Pi3141/alpaca-native-7B-ggml/resolve/397e872bf4c83f4c642317a5bf65ce84a105786e/ggml-model-q4_0.bin). If you prefer a different compatible Embeddings model, just download it and reference it in your `.env` file.
 
-Rename `example.env` to `.env` and edit the variables appropriately.
+## Configurae environment variables
+Copy `example.env` to `.env` and fill in the required configuration variables.
+
 ```
 MODEL_TYPE: supports LlamaCpp or GPT4All
 LLAMA_EMBEDDINGS_MODEL: (absolute) Path to your LlamaCpp supported embeddings model
@@ -70,6 +98,34 @@ Selecting the right local models and the power of `LangChain` you can run the en
 - `ingest.py` uses `LangChain` tools to parse the document and create embeddings locally using `LlamaCppEmbeddings`. It then stores the result in a distributed vector database using `FaVe` vector store. 
 - `privateGPT.py` uses a local LLM based on `GPT4All-J` or `LlamaCpp` to understand questions and create answers. The context for the answers is extracted from `FaVe` using a similarity search to locate the right piece of context from the docs.
 - `GPT4All-J` wrapper was introduced in LangChain 0.0.162.
+
+
+
+
+## Troubleshooting
+
+If you encounter issues, please check the following:
+
+- Make sure all prerequisites are installed.
+- Ensure you have the correct configuration in `.env`.
+
+To report bugs or issues, please open an issue on GitHub.
+
+## Contributing
+
+We welcome contributions!
+
+## Tests
+
+Currently, there are no tests. Contributions in this area are welcome.
+
+## Acknowledgments
+
+- Thanks to all contributors and users of this project.
+
+## Contact
+
+For more information or for contributions, please contact us via repo issues.
 
 # Disclaimer
 This is a test project to validate the feasibility of a fully private solution for question answering using LLMs and Vector embeddings. It is not production ready, and it is not meant to be used in production. The models selection is not optimized for performance, but for privacy; but it is possible to use different models and vectorstores to improve performance.
