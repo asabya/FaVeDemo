@@ -2,7 +2,7 @@
 .DS_STORE
 
 # Models
-models/
+llm/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
